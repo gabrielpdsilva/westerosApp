@@ -8,11 +8,14 @@
 
 import React from 'react';
 
-import SearchScreen from './src/screens/SearchScreen';
+import {NavigationContainer} from '@react-navigation/native';
+import StackMain from './src/navigations/StackMain';
 
 const App = () => {
   return (
-    <SearchScreen/>
+    <NavigationContainer>
+      <StackMain/>
+    </NavigationContainer>
   );
 };
 

@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import {
   View,
   Text,
-  StyleSheet
+  StyleSheet,
+  Alert
 } from 'react-native';
 
 import {Picker} from '@react-native-picker/picker';
@@ -20,17 +21,17 @@ const SearchScreen = ({navigation}) => {
                 selectedValue={selectedRegion}
                 onValueChange={(itemValue, itemIndex) => {
                     setSelectedRegion(itemValue);
-                    navigation.push('ResultScreen', itemValue);
+                    navigation.push('ResultScreen', {region: itemValue});
                 }
             }>
-                <Picker.Item label="North" value="north" />
-                <Picker.Item label="Iron Islands" value="iron" />
-                <Picker.Item label="Riverlands" value="riverlands" />
-                <Picker.Item label="Vale" value="vale" />
-                <Picker.Item label="Westerlands" value="westerlands" />
-                <Picker.Item label="Stormlands" value="stormlands" />
-                <Picker.Item label="Reach" value="reach" />
-                <Picker.Item label="Crownlands" value="crownlands" />
+                <Picker.Item label="North" value="the+north" />
+                <Picker.Item label="Iron Islands" value="iron+islands" />
+                <Picker.Item label="Riverlands" value="the+riverlands" />
+                <Picker.Item label="Vale" value="the+vale" />
+                <Picker.Item label="Westerlands" value="the+westerlands" />
+                <Picker.Item label="Stormlands" value="the+stormlands" />
+                <Picker.Item label="Reach" value="the+reach" />
+                <Picker.Item label="Crownlands" value="the+crownlands" />
                 <Picker.Item label="Dorne" value="dorne" />
             </Picker>
         </View>
