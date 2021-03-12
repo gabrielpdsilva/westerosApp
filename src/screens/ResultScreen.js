@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   Alert,
   FlatList,
-  StyleSheet
+  StyleSheet,
+  ActivityIndicator
 } from 'react-native';
 
 const ResultScreen = ({route, navigation}) => {
@@ -48,6 +49,14 @@ const ResultScreen = ({route, navigation}) => {
             <View style={styles.line}/>
         </TouchableOpacity>
     )
+
+    if(isLoading) {
+        return (
+            <View style={styles.container}>
+                <ActivityIndicator size="large" color="#FF773A" />
+            </View>
+        )
+    }
 
     return (
         <View style={styles.container}>
