@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   View,
-  Text
+  Text,
+  StyleSheet
 } from 'react-native';
 
 const DetailsScreen = () => {
@@ -11,35 +12,57 @@ const DetailsScreen = () => {
             
             <View style={{flexDirection: 'row'}}>
                 <Text>NAME</Text>
-                <Text>...</Text>
+                <Text>Name example</Text>
             </View>
             
             <View style={{flexDirection: 'row'}}>
                 <Text>REGION</Text>
-                <Text>...</Text>
+                <Text>Region example</Text>
             </View>
 
             <View style={{flexDirection: 'row'}}>
                 <Text>CURRENT LORD</Text>
-                <Text>...</Text>
+                <Text>Current lord example</Text>
             </View>
 
             <Text>MORE DETAILS</Text>
 
             <View style={{flexDirection: 'row'}}>           
                 <Text>FOUNDER</Text>
-                <Text>...</Text>
+                <Text>Founder example</Text>
             </View>
             <View style={{flexDirection: 'row'}}>
                 <Text>WORDS</Text>
-                <Text>...</Text>
+                <Text>Words example</Text>
             </View>
             <View style={{flexDirection: 'row'}}>
                 <Text>COAT OF ARMS</Text>
-                <Text>...</Text>
+                <Text>Coat of arms example</Text>
             </View>
         </View>
     )
 }
+
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#0D1521',
+    },
+    title: {
+        fontSize: 20,
+        color: '#FF773A',
+        fontWeight: 'bold'
+    },
+    subtitle: {
+        fontSize: 15,
+        color: '#FF773A',
+        fontWeight: 'bold'
+    },
+    text: {
+        fontSize: 15,
+        color: 'white'
+    },
+});
 
 export default DetailsScreen;
