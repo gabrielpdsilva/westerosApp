@@ -21,21 +21,21 @@ const ResultScreen = ({route, navigation}) => {
 
     const getDataFromAPI = () => {
         fetch(`https://anapioficeandfire.com/api/houses/?region=${region}`)
-        .then((response) => response.json())
-        .then((json) => setData(json))
-        .catch((error) => {
-            Alert.alert(
-                "Ops",
-                "Sorry, something went wrong.",
-                [
-                  {
-                    text: "Return to Homepage",
-                    onPress: () => navigation.goBack()
-                  }
-                ]
-            )
-        })
-        .finally(() => setLoading(false));
+            .then((response) => response.json())
+            .then((json) => setData(json))
+            .catch((error) => {
+                Alert.alert(
+                    "Ops",
+                    "Sorry, something went wrong.",
+                    [
+                    {
+                        text: "Return to Homepage",
+                        onPress: () => navigation.goBack()
+                    }
+                    ]
+                )
+            })
+            .finally(() => setLoading(false));
     }
 
     const ListItem = ({item}) => (
