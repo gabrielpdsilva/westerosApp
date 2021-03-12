@@ -32,7 +32,10 @@ const ResultScreen = ({route, navigation}) => {
                             text: "Return to Homepage",
                             onPress: () => navigation.goBack()
                         }
-                    ]
+                    ],
+                    {
+                        cancelable: false
+                    }
                 )
             })
             .finally(() => setLoading(false));
