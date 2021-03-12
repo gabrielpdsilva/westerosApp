@@ -9,6 +9,8 @@ import {
 
 const ResultScreen = ({route, navigation}) => {
 
+    const {region} = route.params;
+
     const [dataLoading, setDataLoading] = useState(true);
     const [data, setData] = useState([]);
 
@@ -17,7 +19,15 @@ const ResultScreen = ({route, navigation}) => {
     }, []);
 
     const getDataFromAPI = () => {
-        //TODO...
+        fetch(`https://anapioficeandfire.com/api/houses/?region=${region}`)
+        .then((response) => response.json())
+        .then((json) => setData(json))
+        .catch((error) => {
+            Alert.alert("Ops",
+                        "Sorry, something went wrong. Returning to Home page...");
+            navigation.goBack();
+        })
+        .finally(() => setDataLoading(false));
     }
 
     const ListItem = ({item}) => (
