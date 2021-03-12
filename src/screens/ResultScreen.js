@@ -32,12 +32,10 @@ const ResultScreen = ({route, navigation}) => {
     }
 
     const ListItem = ({item}) => (
-        <View>
-            <TouchableOpacity onPress={() => Alert.alert("Going to next screen...")}>
-                <Text>{item.name}</Text>
-                <Text>{item.region}</Text>
-            </TouchableOpacity>
-        </View>
+        <TouchableOpacity onPress={() => Alert.alert("Going to next screen...")}>
+            <Text>{item.name}</Text>
+            <Text>{item.region}</Text>
+        </TouchableOpacity>
     )
 
     return (
