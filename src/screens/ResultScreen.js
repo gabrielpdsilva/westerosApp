@@ -12,7 +12,7 @@ const ResultScreen = ({route, navigation}) => {
 
     const {region} = route.params;
 
-    const [dataLoading, setDataLoading] = useState(true);
+    const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
 
     useEffect(() => {  
@@ -28,7 +28,7 @@ const ResultScreen = ({route, navigation}) => {
                         "Sorry, something went wrong. Returning to Home page...");
             navigation.goBack();
         })
-        .finally(() => setDataLoading(false));
+        .finally(() => setLoading(false));
     }
 
     const ListItem = ({item}) => (
