@@ -24,9 +24,16 @@ const ResultScreen = ({route, navigation}) => {
         .then((response) => response.json())
         .then((json) => setData(json))
         .catch((error) => {
-            Alert.alert("Ops",
-                        "Sorry, something went wrong. Returning to Home page...");
-            navigation.goBack();
+            Alert.alert(
+                "Ops",
+                "Sorry, something went wrong.",
+                [
+                  {
+                    text: "Return to Homepage",
+                    onPress: () => navigation.goBack()
+                  }
+                ]
+            )
         })
         .finally(() => setLoading(false));
     }
