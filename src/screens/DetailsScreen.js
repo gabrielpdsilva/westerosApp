@@ -7,37 +7,37 @@ import {
 
 const DetailsScreen = () => {
     return (
-        <View>
-            <Text>GENERAL INFORMATION</Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>GENERAL INFORMATION</Text>
             
             <View style={{flexDirection: 'row'}}>
-                <Text>NAME</Text>
-                <Text>Name example</Text>
+                <Text style={styles.subtitle}>NAME</Text>
+                <Text style={styles.text}>Name example</Text>
             </View>
             
             <View style={{flexDirection: 'row'}}>
-                <Text>REGION</Text>
-                <Text>Region example</Text>
+                <Text style={styles.subtitle}>REGION</Text>
+                <Text style={styles.text}>Region example</Text>
             </View>
 
             <View style={{flexDirection: 'row'}}>
-                <Text>CURRENT LORD</Text>
-                <Text>Current lord example</Text>
+                <Text style={styles.subtitle}>CURRENT LORD</Text>
+                <Text style={styles.text}>Current lord example</Text>
             </View>
 
-            <Text>MORE DETAILS</Text>
+            <Text style={styles.title}>MORE DETAILS</Text>
 
             <View style={{flexDirection: 'row'}}>           
-                <Text>FOUNDER</Text>
-                <Text>Founder example</Text>
+                <Text style={styles.subtitle}>FOUNDER</Text>
+                <Text style={styles.text}>Founder example</Text>
             </View>
             <View style={{flexDirection: 'row'}}>
-                <Text>WORDS</Text>
-                <Text>Words example</Text>
+                <Text style={styles.subtitle}>WORDS</Text>
+                <Text style={styles.text}>Words example</Text>
             </View>
             <View style={{flexDirection: 'row'}}>
-                <Text>COAT OF ARMS</Text>
-                <Text>Coat of arms example</Text>
+                <Text style={styles.subtitle}>COAT OF ARMS</Text>
+                <Text style={styles.text}>Coat of arms example</Text>
             </View>
         </View>
     )
