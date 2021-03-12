@@ -28,10 +28,10 @@ const ResultScreen = ({route, navigation}) => {
                     "Ops",
                     "Sorry, something went wrong.",
                     [
-                    {
-                        text: "Return to Homepage",
-                        onPress: () => navigation.goBack()
-                    }
+                        {
+                            text: "Return to Homepage",
+                            onPress: () => navigation.goBack()
+                        }
                     ]
                 )
             })
