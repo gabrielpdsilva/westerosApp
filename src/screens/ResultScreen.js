@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   Alert,
   FlatList,
-  StyleSheet
+  StyleSheet,
+  ActivityIndicator
 } from 'react-native';
 
 const ResultScreen = ({route, navigation}) => {
@@ -42,14 +43,23 @@ const ResultScreen = ({route, navigation}) => {
     }
 
     const ListItem = ({item}) => (
-        <TouchableOpacity onPress={() => Alert.alert("Going to next screen...")}>
-            <Text>{item.name}</Text>
-            <Text>{item.region}</Text>
+        <TouchableOpacity style={styles.listItem} onPress={() => Alert.alert("Going to next screen...")}>
+            <Text style={styles.title}>{item.name}</Text>
+            <Text style={styles.subtitle}>{item.region}</Text>
+            <View style={styles.line}/>
         </TouchableOpacity>
     )
 
+    if(isLoading) {
+        return (
+            <View style={styles.container}>
+                <ActivityIndicator size="large" color="#FF773A" />
+            </View>
+        )
+    }
+
     return (
-        <View>
+        <View style={styles.container}>
             <FlatList
                 data={data}
                 keyExtractor={({url}) => url}
@@ -66,9 +76,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#0D1521',
     },
-    item: {
+    listItem: {
         marginLeft: 10,
-        marginTop: 5,
         marginBottom: 5,
     },
     title: {
@@ -81,6 +90,7 @@ const styles = StyleSheet.create({
         color: '#717E91',
     },
     line: {
+        marginTop: 5,
         borderWidth: 0.5,
         borderColor:'#131f30',
     }
