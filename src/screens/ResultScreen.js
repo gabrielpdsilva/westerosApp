@@ -43,7 +43,7 @@ const ResultScreen = ({route, navigation}) => {
     }
 
     const ListItem = ({item}) => (
-        <TouchableOpacity style={styles.listItem} onPress={() => navigation.navigate('DetailsScreen')}>
+        <TouchableOpacity style={styles.listItem} onPress={() => navigation.push('DetailsScreen', {item: item})}>
             <Text style={styles.title}>{item.name}</Text>
             <Text style={styles.subtitle}>{item.region}</Text>
             <View style={styles.line}/>
