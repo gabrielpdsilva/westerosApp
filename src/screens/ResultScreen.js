@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Alert,
   FlatList,
+  StyleSheet
 } from 'react-native';
 
 const ResultScreen = ({route, navigation}) => {
@@ -51,5 +52,30 @@ const ResultScreen = ({route, navigation}) => {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#0D1521',
+    },
+    item: {
+        marginLeft: 10,
+        marginTop: 5,
+        marginBottom: 5,
+    },
+    title: {
+        fontSize: 20,
+        color: 'white',
+        fontWeight: 'bold',
+    },
+    subtitle: {
+        fontSize: 15,
+        color: '#717E91',
+    },
+    line: {
+        borderWidth: 0.5,
+        borderColor:'#131f30',
+    }
+});
 
 export default ResultScreen;
