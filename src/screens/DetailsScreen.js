@@ -25,6 +25,8 @@ const DetailsScreen = () => {
                 <Text style={styles.text}>Current lord example</Text>
             </View>
 
+            <View style={styles.line}/>
+
             <Text style={styles.title}>MORE DETAILS</Text>
 
             <View style={{flexDirection: 'row'}}>           
@@ -42,7 +44,6 @@ const DetailsScreen = () => {
         </View>
     )
 }
-
 
 const styles = StyleSheet.create({
     container: {
@@ -63,6 +64,11 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: 'white'
     },
+    line: {
+        marginTop: 5,
+        borderWidth: 0.5,
+        borderColor:'#5e2f0e',
+    }
 });
 
 export default DetailsScreen;
