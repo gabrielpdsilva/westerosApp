@@ -22,7 +22,7 @@ function StackMain() {
             <Stack.Screen
                 name="DetailsScreen"
                 component={DetailsScreen}
-                options={{title: 'Details', headerStyle: {backgroundColor: '#FF773A'}, headerTintColor: '#ffffff'}}
+                options={{title: 'Loading...', headerStyle: {backgroundColor: '#FF773A'}, headerTintColor: '#ffffff'}}
             />
         </Stack.Navigator>
     );
