@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
   StyleSheet
 } from 'react-native';
 
-const DetailsScreen = () => {
+const DetailsScreen = ({route}) => {
+
+    const {house} = route.params;
+    const [currentLord, setCurrentLord] = useState(null);
+    const [founder, setFounder] = useState(null);
+
+    useEffect(() => {  
+        getCurrentLordFromAPI();
+        getFounderFromAPI();
+    }, []);
+
+    const getCurrentLordFromAPI = () => {
+        fetch(house.currentLord).then((response) => response.json()).then((json) => {
+            setCurrentLord(json);
+        }).catch((error) => setCurrentLord(null));
+    }
+
+    const getFounderFromAPI = () => {
+        fetch(house.founder).then((response) => response.json()).then((json) => {
+            setFounder(json);
+        }).catch((error) => setFounder(null));
+    }
+
     return (
         <View style={styles.container}>
 
@@ -15,15 +37,15 @@ const DetailsScreen = () => {
                 
                 <View style={styles.horizontalView}>
                     <Text style={styles.subtitle}>NAME</Text>
-                    <Text style={styles.text}>Name example</Text>
+                    <Text style={styles.text}>{house.name}</Text>
                 </View>
                 <View style={styles.horizontalView}>
                     <Text style={styles.subtitle}>REGION</Text>
-                    <Text style={styles.text}>Region example</Text>
+                    <Text style={styles.text}>{house.region}</Text>
                 </View>
                 <View style={styles.horizontalView}>
                     <Text style={styles.subtitle}>CURRENT LORD</Text>
-                    <Text style={styles.text}>Current lord example</Text>
+                    <Text style={styles.text}>{currentLord ? currentLord.name : "Unknown"}</Text>
                 </View>
 
             </View>
@@ -36,17 +58,14 @@ const DetailsScreen = () => {
 
                 <View style={styles.horizontalView}>           
                     <Text style={styles.subtitle}>FOUNDER</Text>
-                    <Text style={styles.text}>Founder example</Text>
+                    <Text style={styles.text}>{founder ? founder.name : "Unknown"}</Text>
                 </View>
                 <View style={styles.horizontalView}>
                     <Text style={styles.subtitle}>WORDS</Text>
-                    <Text style={styles.text}>Words example</Text>
+                    <Text style={styles.text}>{house.words ? house.words : "Unknown"}</Text>
                 </View>
-                <View style={styles.horizontalView}>
-                    <Text style={styles.subtitle}>COAT OF ARMS</Text>
-                    <Text style={styles.text}>Coat of arms example</Text>
-                </View>
-
+                <Text style={styles.subtitle}>COAT OF ARMS</Text>
+                <Text style={styles.text}>{house.coatOfArms ? house.coatOfArms : "Unknown"}</Text>
             </View>
 
         </View>
