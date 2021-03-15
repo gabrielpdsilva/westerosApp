@@ -5,7 +5,7 @@ import {
   StyleSheet
 } from 'react-native';
 
-const DetailsScreen = ({route}) => {
+const DetailsScreen = ({route, navigation}) => {
 
     const {house} = route.params;
     const [currentLord, setCurrentLord] = useState(null);
@@ -14,6 +14,7 @@ const DetailsScreen = ({route}) => {
     useEffect(() => {  
         getCurrentLordFromAPI();
         getFounderFromAPI();
+        navigation.setOptions({title: house.name});
     }, []);
 
     const getCurrentLordFromAPI = () => {
