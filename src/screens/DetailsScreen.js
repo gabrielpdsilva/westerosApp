@@ -64,8 +64,10 @@ const DetailsScreen = ({route}) => {
                     <Text style={styles.subtitle}>WORDS</Text>
                     <Text style={styles.text}>{house.words ? house.words : "Unknown"}</Text>
                 </View>
-                <Text style={styles.subtitle}>COAT OF ARMS</Text>
-                <Text style={styles.text}>{house.coatOfArms ? house.coatOfArms : "Unknown"}</Text>
+                <View style={{marginLeft: 20}}>
+                    <Text style={styles.subtitle}>COAT OF ARMS</Text>
+                    <Text style={styles.text}>{house.coatOfArms ? house.coatOfArms : "Unknown"}</Text>
+                </View>
             </View>
 
         </View>
