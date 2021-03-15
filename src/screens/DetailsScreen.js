@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -8,6 +8,22 @@ import {
 const DetailsScreen = ({route}) => {
 
     const {house} = route.params;
+    const [currentLord, setCurrentLord] = useState("");
+    const [founder, setFounder] = useState("");
+
+    useEffect(() => {  
+        getLordsFromAPI();
+    }, []);
+
+    const getLordsFromAPI = () => {
+        fetch(house.currentLord).then((response) => response.json()).then((json)  => {
+            setCurrentLord(json);
+        }).then(()=> {
+                fetch(house.founder).then((response) => response.json()).then((json) => {
+                setFounder(json);
+            }).catch((error) => setFounder(null));
+        }).catch((error) => setCurrentLord(null));
+    }
 
     return (
         <View style={styles.container}>
