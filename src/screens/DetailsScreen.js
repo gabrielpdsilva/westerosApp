@@ -12,23 +12,20 @@ const DetailsScreen = ({route}) => {
     const [founder, setFounder] = useState(null);
 
     useEffect(() => {  
-        fetchLordAndFounder().then(([currentLord, founder]) => {
-            setCurrentLord(currentLord);
-            setFounder(founder);
-        }).catch(error => {
-            setCurrentLord(null);
-            setFounder(null);
-        });
+        getCurrentLordFromAPI();
+        getFounderFromAPI();
     }, []);
 
-    const fetchLordAndFounder = async () => {
-        const [currentLordResponse, founderResponse] = await Promise.all([
-            fetch(house.currentLord),
-            fetch(house.founder)
-        ]);
-        const currentLord = await currentLordResponse.json();
-        const founder = await founderResponse.json();
-        return [currentLord, founder];
+    const getCurrentLordFromAPI = () => {
+        fetch(house.currentLord).then((response) => response.json()).then((json) => {
+            setCurrentLord(json);
+        }).catch((error) => setCurrentLord(null));
+    }
+
+    const getFounderFromAPI = () => {
+        fetch(house.founder).then((response) => response.json()).then((json) => {
+            setFounder(json);
+        }).catch((error) => setFounder(null));
     }
 
     return (
