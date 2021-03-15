@@ -8,21 +8,27 @@ import {
 const DetailsScreen = ({route}) => {
 
     const {house} = route.params;
-    const [currentLord, setCurrentLord] = useState("");
-    const [founder, setFounder] = useState("");
+    const [currentLord, setCurrentLord] = useState(null);
+    const [founder, setFounder] = useState(null);
 
     useEffect(() => {  
-        getLordsFromAPI();
+        fetchLordAndFounder().then(([currentLord, founder]) => {
+            setCurrentLord(currentLord);
+            setFounder(founder);
+        }).catch(error => {
+            setCurrentLord(null);
+            setFounder(null);
+        });
     }, []);
 
-    const getLordsFromAPI = () => {
-        fetch(house.currentLord).then((response) => response.json()).then((json)  => {
-            setCurrentLord(json);
-        }).then(()=> {
-                fetch(house.founder).then((response) => response.json()).then((json) => {
-                setFounder(json);
-            }).catch((error) => setFounder(null));
-        }).catch((error) => setCurrentLord(null));
+    const fetchLordAndFounder = async () => {
+        const [currentLordResponse, founderResponse] = await Promise.all([
+            fetch(house.currentLord),
+            fetch(house.founder)
+        ]);
+        const currentLord = await currentLordResponse.json();
+        const founder = await founderResponse.json();
+        return [currentLord, founder];
     }
 
     return (
