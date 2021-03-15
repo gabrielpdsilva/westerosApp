@@ -10,7 +10,7 @@ import {Picker} from '@react-native-picker/picker';
 
 const SearchScreen = ({navigation}) => {
 
-    const [selectedRegion, setSelectedRegion] = useState();
+    const [selectedRegion, setSelectedRegion] = useState("");
 
     return (
         <View style={styles.container}>
@@ -20,10 +20,12 @@ const SearchScreen = ({navigation}) => {
                 style={styles.picker}
                 selectedValue={selectedRegion}
                 onValueChange={(itemValue, itemIndex) => {
+                    if(itemValue === "") return;
                     setSelectedRegion(itemValue);
                     navigation.push('ResultScreen', {region: itemValue});
                 }
             }>
+                <Picker.Item label="-" value="" />
                 <Picker.Item label="North" value="the+north" />
                 <Picker.Item label="Iron Islands" value="iron+islands" />
                 <Picker.Item label="Riverlands" value="the+riverlands" />
