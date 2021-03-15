@@ -22,7 +22,7 @@ const SearchScreen = ({navigation}) => {
                 onValueChange={(itemValue, itemIndex) => {
                     if(itemValue === "") return;
                     setSelectedRegion(itemValue);
-                    navigation.push('ResultScreen', {region: itemValue});
+                    navigation.navigate('ResultScreen', {region: itemValue});
                 }
             }>
                 <Picker.Item label="-" value="" />
