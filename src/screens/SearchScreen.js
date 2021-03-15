@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
         color: '#828282'
     },
     title: {
+        marginTop: 80,
         fontSize: 30,
         color: 'white',
         textAlign: 'center',
