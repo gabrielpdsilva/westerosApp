@@ -5,7 +5,7 @@ import {
   StyleSheet
 } from 'react-native';
 
-const DetailsScreen = ({route}) => {
+const DetailsScreen = ({route, navigation}) => {
 
     const {house} = route.params;
     const [currentLord, setCurrentLord] = useState(null);
@@ -14,6 +14,7 @@ const DetailsScreen = ({route}) => {
     useEffect(() => {  
         getCurrentLordFromAPI();
         getFounderFromAPI();
+        navigation.setOptions({title: house.name});
     }, []);
 
     const getCurrentLordFromAPI = () => {
@@ -64,7 +65,7 @@ const DetailsScreen = ({route}) => {
                     <Text style={styles.subtitle}>WORDS</Text>
                     <Text style={styles.text}>{house.words ? house.words : "Unknown"}</Text>
                 </View>
-                <View style={{marginLeft: 20}}>
+                <View style={{marginLeft: 10, alignItems: 'center'}}>
                     <Text style={styles.subtitle}>COAT OF ARMS</Text>
                     <Text style={styles.text}>{house.coatOfArms ? house.coatOfArms : "Unknown"}</Text>
                 </View>
@@ -88,11 +89,12 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: '#FF773A',
         fontWeight: 'bold',
-        marginRight: 50
+        marginRight: 0
     },
     text: {
         fontSize: 15,
-        color: 'white'
+        color: 'white',
+        marginRight: 10,
     },
     line: {
         marginTop: 5,
@@ -102,8 +104,7 @@ const styles = StyleSheet.create({
     horizontalView: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginLeft: 20,
-        marginRight: 20
+        marginLeft: 10
     }
 });
 

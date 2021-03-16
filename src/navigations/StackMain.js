@@ -12,17 +12,17 @@ function StackMain() {
             <Stack.Screen
                 name="SearchScreen"
                 component={SearchScreen}
-                options={{title: 'MyApp', headerStyle: {backgroundColor: '#FF773A'}}}
+                options={{title: 'MyApp', headerStyle: {backgroundColor: '#FF773A'}, headerTintColor: '#ffffff'}}
             />
             <Stack.Screen
                 name="ResultScreen"
                 component={ResultScreen}
-                options={{title: 'List of Results', headerStyle: {backgroundColor: '#FF773A'}}}
+                options={{title: 'List of Results', headerStyle: {backgroundColor: '#FF773A'}, headerTintColor: '#ffffff'}}
             />
             <Stack.Screen
                 name="DetailsScreen"
                 component={DetailsScreen}
-                options={{title: 'Details', headerStyle: {backgroundColor: '#FF773A'}}}
+                options={{title: 'Loading...', headerStyle: {backgroundColor: '#FF773A'}, headerTintColor: '#ffffff'}}
             />
         </Stack.Navigator>
     );
