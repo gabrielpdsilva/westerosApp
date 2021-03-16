@@ -104,8 +104,7 @@ const styles = StyleSheet.create({
     horizontalView: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginLeft: 10,
-        marginRight: 0
+        marginLeft: 10
     }
 });
 
