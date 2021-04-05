@@ -12,7 +12,7 @@ function StackMain() {
             <Stack.Screen
                 name="SearchScreen"
                 component={SearchScreen}
-                options={{title: 'MyApp', headerStyle: {backgroundColor: '#FF773A'}, headerTintColor: '#ffffff'}}
+                options={{title: 'WesterosApp', headerStyle: {backgroundColor: '#FF773A'}, headerTintColor: '#ffffff'}}
             />
             <Stack.Screen
                 name="ResultScreen"
