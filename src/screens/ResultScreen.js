@@ -15,13 +15,14 @@ const ResultScreen = ({route, navigation}) => {
 
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
+    const [pageSize, setPageSize] = useState(10);
 
-    useEffect(() => {  
+    useEffect(() => {
         getDataFromAPI();
-    }, []);
+    }, [pageSize]);
 
     const getDataFromAPI = () => {
-        fetch(`https://anapioficeandfire.com/api/houses/?region=${region}`)
+        fetch(`https://anapioficeandfire.com/api/houses/?region=${region}&pageSize=${pageSize}`)
             .then((response) => response.json())
             .then((json) => setData(json))
             .catch((error) => {
@@ -41,6 +42,10 @@ const ResultScreen = ({route, navigation}) => {
             })
             .finally(() => setLoading(false));
     }
+
+    const handleLoadMore = () => {
+        setPageSize(pageSize + 10);
+    };
 
     const ListItem = ({item}) => (
         <TouchableOpacity style={styles.listItem} onPress={() => navigation.navigate('DetailsScreen', {house: item})}>
@@ -63,6 +68,8 @@ const ResultScreen = ({route, navigation}) => {
             <FlatList
                 data={data}
                 keyExtractor={({url}) => url}
+                onEndReachedThreshold={0.01}
+                onEndReached={handleLoadMore}
                 renderItem={({ item }) => (
                     <ListItem item={item}/>
                 )}
