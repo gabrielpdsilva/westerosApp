@@ -16,12 +16,14 @@ const ResultScreen = ({route, navigation}) => {
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const [pageSize, setPageSize] = useState(10);
+    const [isLoadingMore, setLoadingMore] = useState(false);
 
     useEffect(() => {
         getDataFromAPI();
     }, [pageSize]);
 
     const getDataFromAPI = () => {
+        setLoadingMore(true);
         fetch(`https://anapioficeandfire.com/api/houses/?region=${region}&pageSize=${pageSize}`)
             .then((response) => response.json())
             .then((json) => setData(json))
@@ -40,11 +42,16 @@ const ResultScreen = ({route, navigation}) => {
                     }
                 )
             })
-            .finally(() => setLoading(false));
+            .finally(() => {
+                setLoading(false);
+                setLoadingMore(false);
+            });
     }
 
     const handleLoadMore = () => {
-        setPageSize(pageSize + 10);
+        if(!isLoading) {
+            setPageSize(pageSize + 10);
+        }
     };
 
     const ListItem = ({item}) => (
@@ -55,9 +62,16 @@ const ResultScreen = ({route, navigation}) => {
         </TouchableOpacity>
     )
 
+    const renderFooter = () => {
+        if (!isLoadingMore) return null;
+        return (
+            <ActivityIndicator size="large" color="#FF773A" />
+        );
+    };
+
     if(isLoading) {
         return (
-            <View style={styles.container}>
+            <View style={styles.container}>   
                 <ActivityIndicator size="large" color="#FF773A" />
             </View>
         )
@@ -70,6 +84,7 @@ const ResultScreen = ({route, navigation}) => {
                 keyExtractor={({url}) => url}
                 onEndReachedThreshold={0.01}
                 onEndReached={handleLoadMore}
+                ListFooterComponent={renderFooter}
                 renderItem={({ item }) => (
                     <ListItem item={item}/>
                 )}
